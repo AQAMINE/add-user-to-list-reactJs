@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import classes from './AddUser.module.css';
+import ErrorModal from "../UI/ErrorModal";
 
 
 const AddUser = props => {
@@ -32,7 +33,9 @@ const AddUser = props => {
     };
 
     return (
-        //className injected in Card Component is just a normal props you can named as you like like (cssClasses....)
+        <>
+        <ErrorModal title="An error occured!" message="Somting went wrong!"/>
+        {/* className injected in Card Component is just a normal props you can named as you like like (cssClasses....) */}
         <Card className={classes.input}>
             <form onSubmit={addUserHandler}>
                 <label htmlFor="username">Username</label>
@@ -42,6 +45,7 @@ const AddUser = props => {
                 <Button type={'submit'}>Add User</Button>
             </form>
         </Card>
+        </>
     );
 }
 
