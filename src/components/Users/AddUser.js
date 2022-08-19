@@ -8,15 +8,24 @@ import ErrorModal from "../UI/ErrorModal";
 const AddUser = props => {
     const [entredUsername, setEntredUsername] = useState('');
     const [entredAge, setEntredAge] = useState('');
+    const [error, setError] = useState();
 
     const addUserHandler = (event) => {
         event.preventDefault();
 
         if ( entredUsername.trim().length === 0 || entredAge.trim().length === 0 ){
+            setError({
+                title: 'Invalid input',
+                message: 'Please enter a valid name and age (non-empty values).'
+                });
             return;
         }
         //using + to convert entredAge to a number 
         if(+entredAge < 1){
+            setError({
+                title: 'Invalid age',
+                message: 'Please enter a valid age (>0).'
+                });
             return;
         }
         props.onAddUser(entredUsername, entredAge);
@@ -31,10 +40,12 @@ const AddUser = props => {
     const ageChangeHandler = event => {
         setEntredAge(event.target.value);
     };
-
+    const errorHandler =() => {
+        setError(null);
+    };
     return (
         <>
-        <ErrorModal title="An error occured!" message="Somting went wrong!"/>
+        {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
         {/* className injected in Card Component is just a normal props you can named as you like like (cssClasses....) */}
         <Card className={classes.input}>
             <form onSubmit={addUserHandler}>
