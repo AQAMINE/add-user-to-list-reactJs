@@ -44,19 +44,19 @@ const AddUser = props => {
         setError(null);
     };
     return (
-        <>
-        {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
-        {/* className injected in Card Component is just a normal props you can named as you like like (cssClasses....) */}
-        <Card className={classes.input}>
-            <form onSubmit={addUserHandler}>
-                <label htmlFor="username">Username</label>
-                <input id="username" type="text" value={entredUsername} onChange={usernmaeChangeHandler}/>
-                <label htmlFor="age">Age (Years)</label>
-                <input id="age" type="number" value={entredAge} onChange={ageChangeHandler}/>
-                <Button type={'submit'}>Add User</Button>
-            </form>
-        </Card>
-        </>
+        <React.Fragment>
+            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+            {/* className injected in Card Component is just a normal props you can named as you like like (cssClasses....) */}
+            <Card className={classes.input}>
+                <form onSubmit={addUserHandler}>
+                    <label htmlFor="username">Username</label>
+                    <input id="username" type="text" value={entredUsername} onChange={usernmaeChangeHandler}/>
+                    <label htmlFor="age">Age (Years)</label>
+                    <input id="age" type="number" value={entredAge} onChange={ageChangeHandler}/>
+                    <Button type={'submit'}>Add User</Button>
+                </form>
+            </Card>
+        </React.Fragment>
     );
 }
 
