@@ -44,7 +44,7 @@ const AddUser = props => {
         setError(null);
     };
     return (
-        <>
+        <React.Fragment>
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
             {/* className injected in Card Component is just a normal props you can named as you like like (cssClasses....) */}
             <Card className={classes.input}>
@@ -56,7 +56,7 @@ const AddUser = props => {
                     <Button type={'submit'}>Add User</Button>
                 </form>
             </Card>
-        </>
+        </React.Fragment>
     );
 }
 
